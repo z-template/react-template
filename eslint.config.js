@@ -47,7 +47,7 @@ export default [
     },
     rules: {
       // 最大文件限制行数
-      ...typescriptPlugin.configs['recommended'].rules,
+      ...typescriptPlugin.configs['recommended-type-checked'].rules,
       // '@typescript-eslint/consistent-type-definitions': ['error', 'type'], // Prefer type!
       // '@typescript-eslint/member-ordering': [
       //   'error',
