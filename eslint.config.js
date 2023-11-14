@@ -15,8 +15,8 @@ const tsLanguageOptions = {
     parser: typescriptParser,
     parserOptions: {
       ecmaVersion: 'latest',
-      project: './tsconfig.json',
-      sourceType: 'module'
+      sourceType: 'module',
+      project: './tsconfig.json'
     }
   }
 }
@@ -115,6 +115,10 @@ export default [
       'react/jsx-props-no-spreading': 'off', // 强制任何 JSX 属性都不会传播
       'react/no-unsafe': 'off', // 禁止使用不安全的生命周期方法
       'react/react-in-jsx-scope': 'off', // 使用 JSX 时需要引入 React
+      'react/display-name': 'off', // 禁止在 React 组件定义中丢失 displayName
+      'react/prefer-read-only-props': 'off', // 仅在 props 是只读时才强制执行
+      'react/jsx-indent-props': 'off', // 验证 props 缩进
+      'react/function-component-definition': 'off', // 强制执行函数组件的最佳位置
       'react/hook-use-state': 'off' // useState 钩子值和 setter 变量的解构和对称命名
     }
   },
