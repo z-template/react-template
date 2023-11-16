@@ -11,6 +11,7 @@
   border-style: solid;
 }
 body {
+  font-size: 14px;
 }
 a {
   text-decoration: inherit;

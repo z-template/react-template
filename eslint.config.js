@@ -60,14 +60,16 @@ export default [
         }
       ],
       '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/member-ordering': 'off',
+      '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-floating-promises': 'off', // 禁止不返回值的异步函数中有等待的 Promise
       '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-misused-promises': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/member-ordering': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-non-null-assertion': 'warn' // Require comment
     }
@@ -142,7 +144,9 @@ export default [
               // Packages `react` related packages come first.
               '^\\u0000(?!virtual)',
               '^react',
-              '^@?\\w',
+              '^@?\\w'
+            ],
+            [
               // Internal packages.
               '^(@|components)(/.*|$)',
               // Side effect imports.

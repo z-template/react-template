@@ -35,6 +35,17 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
         generateScopedName: '[local]__[hash:base64:5]'
       }
     },
+    server: {
+      port: 3456,
+      open: true,
+      https: false,
+      proxy: {
+        '/prod-api/': {
+          target: 'https://vue.ruoyi.vip',
+          changeOrigin: true
+        }
+      }
+    },
     esbuild: {
       drop: mode === ' production' ? ['console', 'debugger'] : []
     },

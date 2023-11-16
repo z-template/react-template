@@ -1,9 +1,18 @@
-import { Outlet } from 'react-router-dom'
 import { ErrorBoundary, Loading } from '@/components'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { Suspense } from 'react'
+import { useMount } from 'ahooks'
+import useAppStore from '@/store/app'
 
 export default function Main() {
+  const { userInfo, getUserInfo, getAuthMenu } = useAppStore()
+  useMount(() => {
+    Promise.all([getUserInfo(), getAuthMenu()])
+  })
+  if (!userInfo?.nickName) {
+    return <Loading />
+  }
+
   return (
     <ErrorBoundary>
       <div className="px-8 py-3 border-b">

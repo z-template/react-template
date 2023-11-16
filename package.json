@@ -17,6 +17,8 @@
     "ahooks": "^3.7.8",
     "antd": "^5.11.1",
     "axios": "^1.6.2",
+    "js-cookie": "^3.0.5",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,6 +28,8 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
     "@commitlint/config-conventional": "^18.4.0",
+    "@types/js-cookie": "^3.0.6",
+    "@types/lodash-es": "^4.17.11",
     "@types/node": "^20.9.0",
     "@types/nprogress": "^0.2.3",
     "@types/react": "^18.2.15",
