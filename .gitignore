@@ -26,3 +26,4 @@ yarn.lock
 pnpm-lock.yaml
 lerna-debug.log
 bun.lockb
+.husky/_

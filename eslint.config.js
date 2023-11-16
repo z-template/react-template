@@ -48,27 +48,28 @@ export default [
     rules: {
       // 最大文件限制行数
       ...typescriptPlugin.configs['recommended-type-checked'].rules,
-      // '@typescript-eslint/consistent-type-definitions': ['error', 'type'], // Prefer type!
-      // '@typescript-eslint/member-ordering': [
-      //   'error',
-      //   {
-      //     default: {
-      //       memberTypes: typescriptPlugin.rules['member-ordering'].defaultOptions[0].default,
-      //       optionalityOrder: 'required-first',
-      //       order: 'alphabetically-case-insensitive'
-      //     }
-      //   }
-      // ],
-      // '@typescript-eslint/no-floating-promises': 'off', // 禁止不返回值的异步函数中有等待的 Promise
-      // '@typescript-eslint/no-unsafe-assignment': 'off',
-      // '@typescript-eslint/await-thenable': 'off',
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'], // Prefer type!
+      '@typescript-eslint/member-ordering': [
+        'error',
+        {
+          default: {
+            memberTypes: typescriptPlugin.rules['member-ordering'].defaultOptions[0].default,
+            optionalityOrder: 'required-first',
+            order: 'alphabetically-case-insensitive'
+          }
+        }
+      ],
+      '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/no-floating-promises': 'off', // 禁止不返回值的异步函数中有等待的 Promise
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': 'error'
-      // '@typescript-eslint/no-misused-promises': 'off',
-      // '@typescript-eslint/no-unsafe-return': 'off',
-      // '@typescript-eslint/member-ordering': 'off',
-      // '@typescript-eslint/no-unsafe-call': 'off',
-      // '@typescript-eslint/no-non-null-assertion': 'warn' // Require comment
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/member-ordering': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'warn' // Require comment
     }
   },
   {
@@ -124,7 +125,7 @@ export default [
   },
   {
     // Dedicated import configuration
-    files: ['**/*.{cjs,js,ts,tsx}'],
+    files: ['src/*.{cjs,js,ts,tsx}'],
     languageOptions: {
       parserOptions: { ecmaVersion: 'latest', sourceType: 'module' }
     },

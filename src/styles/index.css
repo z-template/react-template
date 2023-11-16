@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  border-width: 0;
+  border-color: #f0f0f0; /* 同步antd border颜色值 */
+  border-style: solid;
+}
+body {
+}
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  margin: 0;
+}
+ol,
+ul,
+dl,
+menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

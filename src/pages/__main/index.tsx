@@ -1,34 +1,26 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import reactLogo from '@/assets/react.svg'
 import { SvgIcon } from '@/components'
+import { Card } from 'antd'
 
 export default function App() {
-  const [count, setCount] = useState(0)
   return (
     <>
-      <div>
-        <a href="https://react.dev" rel="noreferrer" target="_blank">
-          <img alt="React logo" className="logo react" src={reactLogo} />
-          <SvgIcon fill="fill-red-500" size={100} type="react" />
-        </a>
+      <div className="mb-6 space-x-8">
+        <SvgIcon fill="fill-red-500" size={100} type="vite" />
+        <SvgIcon fill="fill-red-500" size={100} type="react" />
+        <SvgIcon fill="fill-red-500" size={100} type="antd" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)} type="button">
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-      <Link to="/about">About</Link>
-      <h1>asd</h1>
-      <h2>asd</h2>
-      <h3>123</h3>
-      <h4>232</h4>
-      <h5>4124</h5>
+      <Card title="基于Vite + React构建">
+        <ul className="text-base list-disc list-inside">
+          <li>antd + zustand + ahooks</li>
+          <li>vite-plugin-pages文件式路由（推荐 remix 路由风格）</li>
+          <li>eslint + prettier + commitLint(eslint扁平化配置更合理)</li>
+          <li>
+            封装SvgIcon 组件<code>&lt;SvgIcon type=&apos;xxx&apos; /&gt;</code>
+          </li>
+          <li>ErrorBoundary + Loading 统一封装</li>
+          <li>1</li>
+        </ul>
+      </Card>
     </>
   )
 }
