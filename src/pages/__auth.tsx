@@ -1,7 +1,8 @@
-import { Outlet } from 'react-router-dom'
-import WEL_COME from '@/assets/images/welcome.png'
-import { ConfigProvider } from 'antd'
 import { Suspense } from 'react'
+import { Outlet } from 'react-router-dom'
+import { ConfigProvider } from 'antd'
+
+import WEL_COME from '@/assets/images/welcome.png'
 import { Loading } from '@/components'
 export default function AuthLayout() {
   return (

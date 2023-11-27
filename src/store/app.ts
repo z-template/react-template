@@ -1,9 +1,10 @@
+import Cookies from 'js-cookie'
+import { isEmpty } from 'lodash-es'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { isEmpty } from 'lodash-es'
-import Cookies from 'js-cookie'
-import { getUserInfo, getUserMenu, login, logout } from '@/services/user'
+
 import { TOKEN_KEY } from '@/config'
+import { getUserInfo, getUserMenu, login, logout } from '@/services/user'
 
 interface TabRoute {
   children?: any[]

@@ -76,6 +76,7 @@ export default [
   },
   {
     files: ['src/**/*.{ts,tsx}'],
+    // react config
     settings: {
       react: {
         pragma: undefined,
@@ -101,8 +102,8 @@ export default [
       ...react.configs.all.rules,
       ...reactHooks.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
-      'react/jsx-wrap-multilines': 'off', // 在多行 JSX 元素周围加上括号
       'react-refresh/only-export-components': 'warn',
+      'react/jsx-wrap-multilines': 'off', // 在多行 JSX 元素周围加上括号
       'react/jsx-filename-extension': 'off', // 禁止可能包含 JSX 文件扩展名
       'react/jsx-first-prop-new-line': 'off', // 强制 JSX 中第一个属性的正确位置
       'react/jsx-no-bind': 'off', // .bind()JSX 属性中禁止使用箭头函数
@@ -110,24 +111,32 @@ export default [
       'react/jsx-max-props-per-line': ['error', { maximum: 4 }], // 在 JSX 中的单行上强制执行最多 props 数量
       'react/jsx-no-literals': 'off', // 禁止在 JSX 中使用字符串文字
       'react/jsx-one-expression-per-line': 'off', // 每行一个 JSX 元素
+      'react/function-component-definition': 'off',
+      'react/display-name': 'off', // 防止在 React 组件定义中丢失 displayName
+      'react/prop-types': 'off', // 防止在 React 组件定义中丢失 props 验证
+      'react/no-multi-comp': 'off', // 防止每个文件有多个组件定义
+      'react/jsx-indent-props': 'off', // 验证 props 缩进
       'react/no-danger': 'off', // 禁止使用 dangerouslySetInnerHTML
       'react/jsx-max-depth': 'off', // 强制 JSX 最大深度
+      'react/prefer-read-only-props': 'off',
+      'react/no-array-index-key': 'off', // 禁止index作为列表序列
       'react/jsx-indent': 'off',
+      // eslint-disable-next-line no-dupe-keys
+      'react/jsx-max-props-per-line': 'off',
+      'react/jsx-no-leaked-render': 'off',
+      'react/no-unstable-nested-components': 'off',
+      'react/jsx-curly-newline': 'off', // 强制所有 JSX 属性都有一致的换行符
       'react/jsx-newline': 'off', // 在 jsx 元素和表达式之后换行
       'react/require-default-props': 'off', // 为每个非必需 prop 强制执行 defaultProps 定义
       'react/jsx-props-no-spreading': 'off', // 强制任何 JSX 属性都不会传播
       'react/no-unsafe': 'off', // 禁止使用不安全的生命周期方法
       'react/react-in-jsx-scope': 'off', // 使用 JSX 时需要引入 React
-      'react/display-name': 'off', // 禁止在 React 组件定义中丢失 displayName
-      'react/prefer-read-only-props': 'off', // 仅在 props 是只读时才强制执行
-      'react/jsx-indent-props': 'off', // 验证 props 缩进
-      'react/function-component-definition': 'off', // 强制执行函数组件的最佳位置
       'react/hook-use-state': 'off' // useState 钩子值和 setter 变量的解构和对称命名
     }
   },
   {
     // Dedicated import configuration
-    files: ['src/*.{cjs,js,ts,tsx}'],
+    files: ['**/*.{cjs,js,ts,tsx}'],
     languageOptions: {
       parserOptions: { ecmaVersion: 'latest', sourceType: 'module' }
     },

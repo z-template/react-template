@@ -1,7 +1,8 @@
-import { ErrorBoundary, Loading } from '@/components'
-import { NavLink, Outlet } from 'react-router-dom'
 import { Suspense } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 import { useMount } from 'ahooks'
+
+import { ErrorBoundary, Loading } from '@/components'
 import useAppStore from '@/store/app'
 
 export default function Main() {

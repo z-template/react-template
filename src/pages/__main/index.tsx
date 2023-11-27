@@ -1,5 +1,6 @@
-import { SvgIcon } from '@/components'
 import { Card } from 'antd'
+
+import { SvgIcon } from '@/components'
 
 export default function App() {
   return (

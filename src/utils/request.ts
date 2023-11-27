@@ -1,8 +1,9 @@
+import { notification } from 'antd'
 import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { notification } from 'antd'
-import { TOKEN_KEY } from '@/config'
 import Cookie from 'js-cookie'
+
+import { TOKEN_KEY } from '@/config'
 
 const errorMessage: any = {
   '401': '认证失败，无法访问系统资源',

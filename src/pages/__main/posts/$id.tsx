@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom'
-import service from '@/utils/request'
 import { useRequest } from 'ahooks'
+
 import { Loading } from '@/components'
+import service from '@/utils/request'
 
 function fetchPosts(id: string) {
   return service.get('https://cnodejs.org/api/v1/topic/' + id)

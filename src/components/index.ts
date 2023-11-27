@@ -1,3 +1,5 @@
 export { default as ErrorBoundary } from './ErrorBoundary'
-export { default as SvgIcon } from './SvgIcon'
 export { default as Loading } from './Loading'
+export { default as SearchForm } from './SearchForm'
+export type { SearchConfig, SearchOption } from './SearchForm/types.d'
+export { default as SvgIcon } from './SvgIcon'

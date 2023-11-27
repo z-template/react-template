@@ -1,12 +1,13 @@
-import { Form, Input, Button } from 'antd'
-import { UserOutlined, LockOutlined, SafetyCertificateOutlined } from '@ant-design/icons'
 import { useState } from 'react'
-import { useRequest } from 'ahooks'
-import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
-import { getCodeImg, login } from '@/services/user'
-import { TOKEN_KEY } from '@/config'
 import { Link } from 'react-router-dom'
+import { LockOutlined, SafetyCertificateOutlined, UserOutlined } from '@ant-design/icons'
+import { useRequest } from 'ahooks'
+import { Button, Form, Input } from 'antd'
+import Cookies from 'js-cookie'
+
+import { TOKEN_KEY } from '@/config'
+import { getCodeImg, login } from '@/services/user'
 
 export default function Login() {
   const navigate = useNavigate()
