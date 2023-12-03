@@ -1,9 +1,9 @@
+import generouted from '@generouted/react-router/plugin'
 import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import type { ConfigEnv, UserConfig } from 'vite'
-import Pages from 'vite-plugin-pages'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default ({ mode, command }: ConfigEnv): UserConfig => {
@@ -11,11 +11,11 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
   return {
     plugins: [
       react(),
-      Pages({
-        routeStyle: 'remix',
-        extensions: [`tsx`],
-        exclude: [`**/components/**/*`, `**/-*.tsx`],
-        importMode: 'async'
+      generouted({
+        source: {
+          routes: ['./src/pages/**/[\\w[-]*.{jsx,tsx}', '!./src/pages/**/components/**'],
+          modals: './src/pages/**/[+]*.{jsx,tsx}'
+        }
       }),
       legacy({}),
       createSvgIconsPlugin({

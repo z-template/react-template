@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
 
+import Nested from '@/components/Nested'
 export default function NestedLayout() {
   return (
-    <div>
-      嵌套路由111
+    <Nested>
       <Outlet />
-    </div>
+    </Nested>
   )
 }

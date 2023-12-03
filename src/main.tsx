@@ -1,9 +1,11 @@
 import ReactDOM from 'react-dom/client'
-
-import App from './App.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { routes } from '@generouted/react-router/lazy'
 
 import 'antd/dist/reset.css'
 import './styles/index.css'
 
 import 'virtual:svg-icons-register'
-ReactDOM.createRoot(document.getElementById(`root`)!).render(<App />)
+
+const router = createBrowserRouter(routes)
+ReactDOM.createRoot(document.getElementById(`root`)!).render(<RouterProvider router={router} />)

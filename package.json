@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@generouted/react-router": "^1.16.1",
     "ahooks": "^3.7.8",
     "antd": "^5.11.1",
     "axios": "^1.6.2",
@@ -60,7 +61,7 @@
     "vite-plugin-svg-icons": "^2.0.1"
   },
   "lint-staged": {
-    "*.*": [
+    "*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write --ignore-unknown"
     ]
