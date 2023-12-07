@@ -4,18 +4,21 @@ import { useMount } from 'ahooks'
 
 import { ErrorBoundary, Loading } from '@/components'
 import useAppStore from '@/store/app'
+import { getAuthorization } from '@/utils'
 
 export default function Main() {
-  const { userInfo, getUserInfo, getAuthMenu } = useAppStore()
+  const { userInfo, getUserInfo } = useAppStore()
   useMount(() => {
-    Promise.all([getUserInfo(), getAuthMenu()])
+    getAuthorization().then(() => {
+      Promise.all([getUserInfo()])
+    })
   })
   if (!userInfo?.nickName) {
     return <Loading />
   }
 
   return (
-    <ErrorBoundary>
+    <div>
       <div className="px-8 py-3 border-b">
         <nav className="space-x-5 text-lg">
           <NavLink className={({ isActive }) => (isActive ? 'text-primary' : '')} to="/">
@@ -38,9 +41,11 @@ export default function Main() {
       </div>
       <Suspense fallback={<Loading />}>
         <div className="p-5">
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
         </div>
       </Suspense>
-    </ErrorBoundary>
+    </div>
   )
 }

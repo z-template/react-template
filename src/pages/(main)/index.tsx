@@ -6,9 +6,9 @@ export default function App() {
   return (
     <>
       <div className="mb-6 space-x-8">
-        <SvgIcon fill="fill-red-500" size={100} type="vite" />
-        <SvgIcon fill="fill-red-500" size={100} type="react" />
-        <SvgIcon fill="fill-red-500" size={100} type="antd" />
+        <SvgIcon size={100} type="vite" />
+        <SvgIcon fill="fill-[#087ea4]" size={100} type="react" />
+        <SvgIcon size={100} type="antd" />
       </div>
       <Card title="基于Vite + React构建">
         <ul className="text-base list-disc list-inside">
@@ -19,7 +19,6 @@ export default function App() {
             封装SvgIcon 组件<code>&lt;SvgIcon type=&apos;xxx&apos; /&gt;</code>
           </li>
           <li>ErrorBoundary + Loading 统一封装</li>
-          <li>1</li>
         </ul>
       </Card>
     </>

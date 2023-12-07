@@ -9,6 +9,8 @@ export type Path =
   | `/list/user/($id)`
   | `/login`
   | `/nested`
+  | `/nested/:categories`
+  | `/nested/:categories/:subCategories`
   | `/nested/detail/:id`
   | `/nested/todo`
   | `/posts`
@@ -16,6 +18,8 @@ export type Path =
   | `/register`
 
 export type Params = {
+  '/nested/:categories': { categories: string }
+  '/nested/:categories/:subCategories': { categories: string; subCategories: string }
   '/nested/detail/:id': { id: string }
   '/posts/:id': { id: string }
 }

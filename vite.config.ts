@@ -4,11 +4,16 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import type { ConfigEnv, UserConfig } from 'vite'
+import { loadEnv } from 'vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
+import { iconDts } from './vite-plugin/icon.dts'
+
 export default ({ mode, command }: ConfigEnv): UserConfig => {
-  console.log('mode', mode, command)
+  const { VITE_APP_BASE_API_URL } = loadEnv(mode, './env')
+  console.log('mode', mode, command, VITE_APP_BASE_API_URL)
   return {
+    envDir: './env',
     plugins: [
       react(),
       generouted({
@@ -23,7 +28,8 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
         symbolId: 'icon-[name]',
         inject: 'body-first',
         customDomId: '__svg__icons__dom__'
-      })
+      }),
+      iconDts()
     ],
     resolve: {
       alias: {

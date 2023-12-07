@@ -60,6 +60,7 @@ export default [
         }
       ],
       '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/member-ordering': 'off',
       '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-floating-promises': 'off', // 禁止不返回值的异步函数中有等待的 Promise
@@ -136,7 +137,7 @@ export default [
   },
   {
     // Dedicated import configuration
-    files: ['**/*.{cjs,js,ts,tsx}'],
+    files: ['**/*.{cjs,ts,tsx}'],
     languageOptions: {
       parserOptions: { ecmaVersion: 'latest', sourceType: 'module' }
     },

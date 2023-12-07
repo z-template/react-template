@@ -2,7 +2,7 @@ import React from 'react'
 import { CascaderProps, DatePickerProps, InputProps, RadioGroupProps, SelectProps } from 'antd'
 import { CheckboxGroupProps, CheckboxOptionType } from 'antd/es/checkbox'
 import type { RangePickerProps } from 'antd/es/date-picker'
-import type { FormItemProps } from 'antd/es/form'
+import type { FormItemProps, FormProps } from 'antd/es/form'
 
 type newFormItemProps = Omit<FormItemProps, 'hidden'>
 type CommonType = {

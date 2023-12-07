@@ -1,4 +1,5 @@
 import { ThemeConfig } from 'antd/lib/config-provider'
+
 import { colors } from './themeColor'
 
 export const antConfig: ThemeConfig = {

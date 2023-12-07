@@ -5,8 +5,6 @@ import { omit } from 'lodash-es'
 
 import type { SearchConfig, SearchOption } from './types.d'
 
-import './index.css'
-
 const { RangePicker } = DatePicker
 
 const SearchForm: React.FC<SearchConfig> = props => {
@@ -41,7 +39,7 @@ const SearchForm: React.FC<SearchConfig> = props => {
   }, [size, onResize])
 
   function finish() {
-    form.validateFields().then(values => {
+    form.validateFields().then((values: any) => {
       onChange?.(values)
     })
   }
@@ -58,14 +56,7 @@ const SearchForm: React.FC<SearchConfig> = props => {
     const itemType = item.itemType
     switch (itemType) {
       case 'input':
-        return (
-          <Input
-            allowClear
-            placeholder={item.placeholder ?? '请输入'}
-            prefix={<div>{item.label}:</div>}
-            {...item.fieldProps}
-          />
-        )
+        return <Input allowClear placeholder={item.placeholder ?? '请输入'} {...item.fieldProps} />
       case 'radio':
         return <Radio.Group options={item.options} {...item.fieldProps} />
       case 'checkbox':
@@ -103,12 +94,7 @@ const SearchForm: React.FC<SearchConfig> = props => {
         break
     }
   }
-  function showLabel(item: SearchOption) {
-    if (['select', 'input'].includes(item.itemType)) {
-      return ''
-    }
-    return item.label
-  }
+
   return (
     <div className="p-6 pb-1 mb-3 bg-white rounded" ref={ref}>
       <Form autoComplete="off" form={form} id="searchform" onFinish={finish} {...formRest}>
@@ -135,7 +121,7 @@ const SearchForm: React.FC<SearchConfig> = props => {
               )
             } else {
               return (
-                <Form.Item key={item.name} {...restItem} label={showLabel(item)}>
+                <Form.Item key={item.name} label={item.label} {...restItem}>
                   {itemRender(item)}
                 </Form.Item>
               )

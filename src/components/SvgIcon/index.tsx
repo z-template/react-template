@@ -5,7 +5,7 @@ import styles from './index.module.css'
 interface IProps {
   className?: string
   fill?: string // fill className
-  type: string
+  type: ISvgIconPath
   color?: string
   size?: string | number
   style?: React.CSSProperties

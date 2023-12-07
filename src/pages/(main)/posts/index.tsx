@@ -26,7 +26,12 @@ const getTableData = ({ current, pageSize }: any, formData: any) => {
     list: res.data
   }))
 }
-
+const tags = [
+  { value: 'share', label: '分享' },
+  { value: 'ask', label: '问答' },
+  { value: 'job', label: '招聘' },
+  { value: 'good', label: '精华' }
+]
 export default function Posts() {
   const [form] = Form.useForm()
   const { tableProps, error, search } = useAntdTable(getTableData, {
@@ -42,11 +47,19 @@ export default function Posts() {
     return <Loading />
   }
   const options: SearchOption[] = [
-    { label: '标题', name: 'title', itemType: 'input' },
-    { label: '主题', name: 'tag', itemType: 'select', options: [] }
+    { label: '分类', name: 'tab', itemType: 'select', options: tags },
+    { label: '标题', name: 'title', itemType: 'input' }
   ]
   const columns: ColumnsType<RecordType> = [
-    { title: '标题', dataIndex: 'title' },
+    {
+      title: '标题',
+      dataIndex: 'title',
+      render: (text: string, record) => (
+        <Link className="text-primary" to={`/posts/${record.id}`}>
+          {text}
+        </Link>
+      )
+    },
     {
       title: '分类',
       dataIndex: 'tab',
@@ -57,8 +70,7 @@ export default function Posts() {
   ]
   return (
     <div>
-      <SearchForm form={form} onChange={submit} options={options} />
-      <Link to="/posts/1">Post 1</Link>
+      <SearchForm form={form} initialValues={{ tab: 'good' }} onChange={submit} options={options} />
       <Table<RecordType> columns={columns} rowKey="id" {...tableProps} />
     </div>
   )

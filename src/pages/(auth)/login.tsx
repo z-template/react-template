@@ -2,51 +2,31 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { LockOutlined, SafetyCertificateOutlined, UserOutlined } from '@ant-design/icons'
-import { useRequest } from 'ahooks'
 import { Button, Form, Input } from 'antd'
 import Cookies from 'js-cookie'
 
+import IMG from '@/assets/images/code.png'
 import { TOKEN_KEY } from '@/config'
-import { getCodeImg, login } from '@/services/user'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
   const [form] = Form.useForm()
-  const { data: captcha, refresh: refreshImg } = useRequest(async () => {
-    const res = await getCodeImg()
-    if (res.code === 200) {
-      res.avatar = `data:image/gif;base64,${res.img}`
-    }
-    return res
-  })
-
-  function submit(v: any) {
-    const params = {
-      ...v,
-      uuid: captcha.uuid
-    }
-    setLoading(true)
-    login(params)
-      .then(res => {
-        if (res.code === 200) {
-          Cookies.set(TOKEN_KEY, res.token)
-          // setTimeout(() => {
-          navigate('/')
-          // }, 200)
-        }
-      })
-      .catch(() => {
-        console.log('11')
-        refreshImg()
-        setLoading(false)
-        form.setFieldsValue({ code: undefined })
-      })
+  function getUuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0,
+        v = c == 'x' ? r : (r & 0x3) | 0x8
+      return v.toString(16)
+    })
+  }
+  function submit() {
+    Cookies.set(TOKEN_KEY, getUuid())
+    navigate('/')
   }
   return (
     <div className="mx-auto rounded-md max-w-320px ">
       <div className="mb-10 text-center">
-        <h2 className="my-2 text-xl">Welcome to X-Template</h2>
+        <h2 className="my-2 text-xl">Welcome to Z-Template</h2>
       </div>
       <Form
         autoComplete="off"
@@ -75,13 +55,7 @@ export default function Login() {
               />
             </Form.Item>
             <Form.Item noStyle>
-              <img
-                alt="code"
-                className="w-[106px]"
-                height={40}
-                onClick={refreshImg}
-                src={captcha?.avatar}
-              />
+              <img alt="code" className="w-[106px]" height={40} src={IMG} />
             </Form.Item>
           </div>
         </Form.Item>

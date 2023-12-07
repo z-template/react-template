@@ -1,1 +1,1 @@
-export const TOKEN_KEY = 'x-template'
+export const TOKEN_KEY = 'z-access-token'

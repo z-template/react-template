@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
 
 import { Loading } from '@/components'
@@ -14,19 +15,27 @@ interface RecordType {
 }
 export default function Post() {
   const { id } = useParams() as { id: string }
-
-  const { data } = useRequest(async () => {
+  const navigate = useNavigate()
+  const { data, error } = useRequest(async () => {
     const res = await fetchPosts(id)
     return res?.data as RecordType
   })
-
+  if (error) {
+    return <div>failed to load</div>
+  }
   if (!data) {
     return <Loading />
   }
   return (
     <div>
-      <h2 className="text-xl font-500">{data?.title}</h2>
-      <div className="pt-5 mt-4 border-t" dangerouslySetInnerHTML={{ __html: data?.content }} />
+      <div className="flex py-4 text-lg border-b">
+        <div className="cursor-pointer" onClick={() => navigate(-1)}>
+          <ArrowLeftOutlined />
+          返回
+        </div>
+      </div>
+      <h2 className="pt-8 text-xl text-center font-500">{data?.title}</h2>
+      <div className="pt-5 mt-4" dangerouslySetInnerHTML={{ __html: data?.content }} />
     </div>
   )
 }
