@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@generouted/react-router": "^1.16.1",
+    "@generouted/react-router": "^1.17.0",
     "ahooks": "^3.7.8",
     "antd": "^5.12.1",
     "axios": "^1.6.2",

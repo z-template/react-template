@@ -7,7 +7,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.eslint": true,
+    "source.fixAll": "always",
     "source.organizeImports": "never"
   },
   // Enable eslint for all supported languages

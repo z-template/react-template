@@ -1,12 +1,13 @@
-import typescriptPlugin from '@typescript-eslint/eslint-plugin'
-import typescriptParser from '@typescript-eslint/parser'
-import prettierConfig from 'eslint-config-prettier'
 import eslintPrettier from 'eslint-plugin-prettier'
+import globals from 'globals'
+import prettierConfig from 'eslint-config-prettier'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import globals from 'globals'
+import js from '@eslint/js'
+import typescriptParser from '@typescript-eslint/parser'
+import typescriptPlugin from '@typescript-eslint/eslint-plugin'
 
 /** @type {import("eslint").Linter.FlatConfig<import("@typescript-eslint/parser").ParserOptions>} */
 const tsLanguageOptions = {
@@ -15,8 +16,8 @@ const tsLanguageOptions = {
     parser: typescriptParser,
     parserOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module',
-      project: './tsconfig.json'
+      project: './tsconfig.json',
+      sourceType: 'module'
     }
   }
 }
@@ -29,21 +30,22 @@ export default [
       prettier: eslintPrettier
     },
     rules: {
-      'prettier/prettier': 'error',
-      'max-lines': ['error', { max: 680, skipBlankLines: true, skipComments: true }],
-      'jsx-quotes': ['error', 'prefer-double'] // 强制在 JSX 属性中一致使用双引号或单引号
+      ...js.configs.recommended.rules,
+      'jsx-quotes': ['error', 'prefer-double'],
+      'max-lines': ['error', { max: 680, skipBlankLines: true, skipComments: true }]
+      // 'prettier/prettier': 'error'
     }
   },
   {
     // TypeScript-specific rules
     files: ['**/*.{ts,tsx}'],
-    plugins: {
-      '@typescript-eslint': typescriptPlugin
-    },
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json'
       }
+    },
+    plugins: {
+      '@typescript-eslint': typescriptPlugin
     },
     rules: {
       // 最大文件限制行数
@@ -77,7 +79,7 @@ export default [
   },
   {
     files: ['src/**/*.{ts,tsx}'],
-    // react config
+    // React config
     settings: {
       react: {
         pragma: undefined,
@@ -132,7 +134,7 @@ export default [
       'react/jsx-props-no-spreading': 'off', // 强制任何 JSX 属性都不会传播
       'react/no-unsafe': 'off', // 禁止使用不安全的生命周期方法
       'react/react-in-jsx-scope': 'off', // 使用 JSX 时需要引入 React
-      'react/hook-use-state': 'off' // useState 钩子值和 setter 变量的解构和对称命名
+      'react/hook-use-state': 'off' // UseState 钩子值和 setter 变量的解构和对称命名
     }
   },
   {
@@ -159,9 +161,11 @@ export default [
             [
               // Internal packages.
               '^(@|components)(/.*|$)',
-              // Side effect imports.
-              // '^\\u0000',
-              // Parent imports. Put `..` last.
+              /*
+               * Side effect imports.
+               * '^\\u0000',
+               * Parent imports. Put `..` last.
+               */
               '^\\.\\.(?!/?$)',
               '^\\.\\./?$',
               // Other relative imports. Put same-folder imports and `.` last.

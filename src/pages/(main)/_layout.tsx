@@ -9,9 +9,13 @@ import { getAuthorization } from '@/utils'
 export default function Main() {
   const { userInfo, getUserInfo } = useAppStore()
   useMount(() => {
-    getAuthorization().then(() => {
-      Promise.all([getUserInfo()])
-    })
+    getAuthorization()
+      .then(() => {
+        Promise.all([getUserInfo()])
+      })
+      .catch(() => {
+        location.href = '/login'
+      })
   })
   if (!userInfo?.nickName) {
     return <Loading />

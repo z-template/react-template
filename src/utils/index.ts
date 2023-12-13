@@ -3,9 +3,9 @@ import Cookies from 'js-cookie'
 import { TOKEN_KEY } from '@/config'
 
 export function getAuthorization() {
-  const searchParams = new URLSearchParams(location.search)
-  const url_token = searchParams.get('access_token')
-  const access_token = Cookies.get(TOKEN_KEY)
+  const searchParams = new URLSearchParams(location.search),
+    url_token = searchParams.get('access_token'),
+    access_token = Cookies.get(TOKEN_KEY)
   if (url_token) {
     Cookies.set(TOKEN_KEY, url_token)
     sessionStorage.clear()
@@ -17,10 +17,10 @@ export function getAuthorization() {
   if (!access_token) {
     sessionStorage.clear()
     localStorage.clear()
-    window.location.href = `/login`
-    // return new Promise(reject => {
-    //   reject(false)
-    // })
+    // Window.location.href = `/login`
+    return new Promise((resolve, reject) => {
+      reject(false)
+    })
   }
   return new Promise(resolve => {
     resolve(true)
