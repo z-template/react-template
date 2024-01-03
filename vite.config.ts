@@ -44,7 +44,6 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
     server: {
       port: 3456,
       open: true,
-      https: false,
       headers: {
         // 开发环境vite或generouted偶发缓存问题，导致页面UI更新不及时
         'cache-control': 'no-store'

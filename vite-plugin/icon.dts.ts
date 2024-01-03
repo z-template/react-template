@@ -23,7 +23,7 @@ function debounce(fn: () => void, wait: number) {
 // glob 默认只支持 / 作为路径分隔符，windows 下会出现问题
 const normalizePath = (path: string) => path.replace(/\\/g, '/')
 
-interface IconDtsOptions {
+type IconDtsOptions = {
   /** 监听的目录 */
   directory: string
   /** 输出的dts文件 */
@@ -36,7 +36,7 @@ interface IconDtsOptions {
 
 const defualtOptions: IconDtsOptions = {
   directory: 'src/assets/svg/',
-  dts: 'types/icons-dts.d.ts',
+  dts: 'src/components/SvgIcon/icons-dts.d.ts',
   delay: 200,
   interfaceName: 'ISvgIconPath'
 }
@@ -62,7 +62,7 @@ export function iconDts(options: Partial<IconDtsOptions> = {}) {
         assets = assets.map((i: string) => i.replace('.svg', ''))
         assets = assets.map((i: string) => i.replace('/', '-'))
 
-        let output = `/* prettier-ignore-start */\n/* tslint:disable */\n/* eslint-disable */\ntype ${interfaceName} =\n`
+        let output = `/* prettier-ignore-start */\n/* tslint:disable */\n/* eslint-disable */\nexport type ${interfaceName} =\n`
         for (let i = 0; i < assets.length; i++) {
           const pic = assets[i]
           output += `| '${pic}'\n`

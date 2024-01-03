@@ -1,7 +1,8 @@
 import React from 'react'
 
-import styles from './index.module.css'
+import { ISvgIconPath } from './icons-dts'
 
+import styles from './index.module.css'
 interface IProps {
   className?: string
   fill?: string // fill className

@@ -29,9 +29,16 @@ export default [
     plugins: {
       prettier: eslintPrettier
     },
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    },
     rules: {
       ...js.configs.recommended.rules,
       'jsx-quotes': ['error', 'prefer-double'],
+      'no-dupe-keys': 'off',
       'max-lines': ['error', { max: 680, skipBlankLines: true, skipComments: true }]
       // 'prettier/prettier': 'error'
     }
@@ -61,9 +68,9 @@ export default [
           }
         }
       ],
+      '@typescript-eslint/member-ordering': ['off'],
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
-      '@typescript-eslint/member-ordering': 'off',
       '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-floating-promises': 'off', // 禁止不返回值的异步函数中有等待的 Promise
       '@typescript-eslint/no-unsafe-assignment': 'off',

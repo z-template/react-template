@@ -2,7 +2,7 @@ import React from 'react'
 import { CascaderProps, DatePickerProps, InputProps, RadioGroupProps, SelectProps } from 'antd'
 import { CheckboxGroupProps, CheckboxOptionType } from 'antd/es/checkbox'
 import type { RangePickerProps } from 'antd/es/date-picker'
-import type { FormItemProps, FormProps } from 'antd/es/form'
+import type { FormInstance, FormItemProps, FormProps } from 'antd/es/form'
 
 type newFormItemProps = Omit<FormItemProps, 'hidden'>
 type CommonType = {
@@ -59,8 +59,8 @@ type FiledRangePickerType = {
 
 type FiledCustomType = {
   itemType: 'custom'
-  render?: React.ReactNode
   fieldProps?: any
+  render?: React.ReactNode
 } & CommonType
 
 type FiledHiddenType = {
@@ -80,17 +80,17 @@ export type SearchOption =
   | FiledHiddenType
   | FiledCustomType
 
-export interface SearchConfig extends FormProps {
-  options: SearchOption[]
-  form: FormInstance
+export type SearchConfig = {
   grid?: string
+  hideBtn?: boolean
   loading?: boolean
-  searchBtnLeft?: boolean
-  searchBtnText?: string
-  restBtnText?: string
-  onResize?: (height: any) => void
   onChange?: (v: any) => void
   onReset?: () => void
-  hideBtn?: boolean
+  onResize?: (height: any) => void
+  restBtnText?: string
+  searchBtnLeft?: boolean
+  searchBtnText?: string
   children?: React.ReactNode
-}
+  form: FormInstance
+  options: SearchOption[]
+} & FormProps
